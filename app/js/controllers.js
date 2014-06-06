@@ -6,7 +6,7 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
   function($scope) {
 	function newCell() {
 		var newCell = {'state': false, 'bomb': false};
-		if (Math.random() < 0.05){
+		if (Math.random() < 0.1){
 			newCell.bomb = true;
 		}
 		return newCell;
@@ -81,9 +81,20 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 		return bombs;
 	}
 
+	function checkForLoss(cell) {
+		if (cell.bomb) {
+			alert("You lose");
+		}
+	}
+	
+	function checkForWin(rows) {
+	}
+
 	function selectCell(cell) {
 		cell.state = !cell.state;
 		cell.bombsNearby = calculateBombsNearby(cell);
+		checkForLoss(cell);
+		checkForWin($scope.rows);
 	}
 	
 	$scope.selectCell = selectCell;

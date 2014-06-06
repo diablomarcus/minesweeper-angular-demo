@@ -12,38 +12,36 @@ font-size: 1.5em;
 display: flex;
 }
 
+.mine-text {
+font-size: 2em;
+}
+
 .cell {
 border-color: #DFDFDF;
 border-style: solid;
 border-width: 1px;
 height: 3em;
 width: 3em;
+text-align: center;
+}
+
+.cell-unclear {
 background-color: #AFAFAF;
 }
 
-.cell:hover {
+.cell-unclear:hover {
 background-color: #CFCFCF;
 }
 
-.cell-clean {
-border-color: #DFDFDF;
-border-style: solid;
-border-width: 1px;
-height: 3em;
-width: 3em;
+.cell-clear {
 background-color: #8AC007;
 }
 
-.cell-clean:hover {
+.cell-clear:hover {
 background-color: #AAF027;
 }
 
 .cell-bomb {
-border-color: #DFDFDF;
-border-style: solid;
-border-width: 1px;
-height: 3em;
-width: 3em;
 background-color: #E60000;
 }
 
