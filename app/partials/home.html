@@ -4,9 +4,9 @@ Bombs: {{numberOfFlags}}
 </div>
 <div class="minefield">
 	<div ng-repeat="row in rows">
-		<div class="cell" ng-class="{'cell-unclear': !cell.state, 'cell-clear': cell.state && !cell.bomb, 'cell-bomb': cell.state && cell.bomb}"
+		<div class="cell" ng-class="{'cell-unclear': !cell.selected, 'cell-clear': cell.selected && !cell.bomb, 'cell-bomb': cell.selected && cell.bomb}"
 			ng-repeat="cell in row.cells"
-			ng-click='selectCell(cell)'>
+			ng-click="selectCell(cell)">
 			<p class="mine-text">{{cell.bombsNearby}}</p>
 		</div>
 	</div>

@@ -5,7 +5,7 @@ var minesweeperControllers = angular.module('minesweeperControllers', []);
 minesweeperControllers.controller('HomeCtrl', ['$scope',
   function($scope) {
 	function newCell() {
-		var newCell = {'state': false, 'bomb': false};
+		var newCell = {'selected': false, 'bomb': false};
 		if (Math.random() < 0.1){
 			newCell.bomb = true;
 		}
@@ -91,13 +91,16 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 	}
 
 	function selectCell(cell) {
-		cell.state = !cell.state;
+		cell.selected = true;
 		cell.bombsNearby = calculateBombsNearby(cell);
 		checkForLoss(cell);
 		checkForWin($scope.rows);
 	}
+	function flagCell(cell) {
+	}
 	
 	$scope.selectCell = selectCell;
+	$scope.flagCell = flagCell;
 	createCells();
   }
 ]);

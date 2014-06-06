@@ -7,8 +7,7 @@ var minesweeperApp = angular.module('minesweeperApp', [
 
   'minesweeperControllers',
   'minesweeperFilters',
-  'minesweeperServices',
-  'minesweeperDirectives'
+  'minesweeperServices'
 ]);
 
 minesweeperApp.config(['$routeProvider',
