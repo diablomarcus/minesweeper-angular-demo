@@ -1,0 +1,13 @@
+<h1>Minesweeper</h1>
+<div class="top-bar">
+Bombs: {{numberOfFlags}}
+</div>
+<div class="minefield">
+	<div ng-repeat="row in rows">
+		<div ng-class="{'cell': !cell.state, 'cell-clean': cell.state && !cell.bomb, 'cell-bomb': cell.state && cell.bomb}"
+			ng-repeat="cell in row.cells"
+			ng-click='selectCell(cell)'>
+			{{cell.bombsNearby}}
+		</div>
+	</div>
+</div>
