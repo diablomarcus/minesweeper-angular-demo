@@ -12,6 +12,14 @@ font-size: 1.5em;
 padding-top: 1em;
 }
 
+.win-message {
+color: #8AC007;
+}
+
+.loss-message {
+color: #E60000;
+}
+
 .minefield {
 display: flex;
 }

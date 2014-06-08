@@ -1,6 +1,8 @@
 <h1>Minesweeper</h1>
 <section class="top-bar">
-Bombs: {{numberOfFlags}}
+	<p>Bombs: {{numberOfFlags}}</p>
+	<p class="win-message" ng-show="hasWon">You have won!</p>
+	<p class="loss-message" ng-show="hasLost">You have lost.</p>
 </section>
 <section class="minefield">
 	<div ng-repeat="row in rows">
