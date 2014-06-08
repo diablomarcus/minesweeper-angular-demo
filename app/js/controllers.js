@@ -6,14 +6,14 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
   function($scope) {
 	function newCell() {
 		var newCell = {'selected': false, 'bomb': false};
-		if (Math.random() < 0.1){
+		if (Math.random() < 0.2){
 			newCell.bomb = true;
 		}
 		return newCell;
 	}
 
 	function createCells() {
-		var gridSize = 4;
+		var gridSize = 15;
 		$scope.rows = [];
 		$scope.numberOfFlags = 0;
 		for (var i = 0; i < gridSize; i++) {
@@ -29,6 +29,18 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 				$scope.rows[i].cells.add(cell);
 			}
 		}
+	}
+
+	function getNumberOfUnclearedCells() {
+		var unclearedCells = 0;
+		$scope.rows.forEach(function (row) {
+			row.cells.forEach(function (cell) {
+				if (!cell.selected) {
+					unclearedCells++;
+				}
+			});
+		});
+		return unclearedCells;
 	}
 	
 	function calculateBombsNearby(cell) {
@@ -121,6 +133,7 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 
 	$scope.selectCell = selectCell;
 	$scope.resetGame = resetGame;
+	$scope.getNumberOfUnclearedCells = getNumberOfUnclearedCells;
 	resetGame();
   }
 ]);

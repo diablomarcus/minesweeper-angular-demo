@@ -1,6 +1,8 @@
 <h1>Minesweeper</h1>
 <section class="top-bar">
-	<p>Bombs: {{numberOfFlags}}</p>
+	<p>Bombs: {{numberOfFlags}}
+		<span class="pull-right">Uncleared: {{getNumberOfUnclearedCells()}}</span>
+	</p>
 	<p class="win-message" ng-show="hasWon">You have won!</p>
 	<p class="loss-message" ng-show="hasLost">You have lost.</p>
 </section>
