@@ -13,11 +13,12 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 	}
 
 	function createCells() {
+		var gridSize = 4;
 		$scope.rows = [];
 		$scope.numberOfFlags = 0;
-		for (var i = 0; i < 10; i++) {
+		for (var i = 0; i < gridSize; i++) {
 			$scope.rows.add({'cells': []});
-			for (var j = 0; j < 10; j++) {
+			for (var j = 0; j < gridSize; j++) {
 				var cell = newCell();
 				cell.rowNumber = i;
 				cell.columnNumber = j;
@@ -67,7 +68,6 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 			}
 		}
 
-		//Sides
 		if (!isLeft) {
 			if ($scope.rows[cell.rowNumber].cells[cell.columnNumber - 1].bomb) {
 				bombs++;
@@ -83,24 +83,44 @@ minesweeperControllers.controller('HomeCtrl', ['$scope',
 
 	function checkForLoss(cell) {
 		if (cell.bomb) {
+			$scope.hasLost = true;
 			alert("You lose");
 		}
 	}
 	
 	function checkForWin(rows) {
+		var hasWon = true;
+		rows.forEach(function (row) {
+			row.cells.forEach(function (cell) {
+				if (!cell.selected && !cell.bomb) {
+					hasWon = false;
+				}
+			});
+		});
+		if (hasWon) {
+			$scope.hasWon = true;
+			alert('You win!');
+		}
+	}
+
+	function resetGame() {
+		$scope.hasWon = false;
+		$scope.hasLost = false;
+		createCells();
 	}
 
 	function selectCell(cell) {
+		if ($scope.hasWon || $scope.hasLost) {
+			return;
+		}
 		cell.selected = true;
 		cell.bombsNearby = calculateBombsNearby(cell);
 		checkForLoss(cell);
 		checkForWin($scope.rows);
 	}
-	function flagCell(cell) {
-	}
-	
+
 	$scope.selectCell = selectCell;
-	$scope.flagCell = flagCell;
-	createCells();
+	$scope.resetGame = resetGame;
+	resetGame();
   }
 ]);

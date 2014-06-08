@@ -1,8 +1,8 @@
 <h1>Minesweeper</h1>
-<div class="top-bar">
+<section class="top-bar">
 Bombs: {{numberOfFlags}}
-</div>
-<div class="minefield">
+</section>
+<section class="minefield">
 	<div ng-repeat="row in rows">
 		<div class="cell" ng-class="{'cell-unclear': !cell.selected, 'cell-clear': cell.selected && !cell.bomb, 'cell-bomb': cell.selected && cell.bomb}"
 			ng-repeat="cell in row.cells"
@@ -10,4 +10,7 @@ Bombs: {{numberOfFlags}}
 			<p class="mine-text">{{cell.bombsNearby}}</p>
 		</div>
 	</div>
-</div>
+</section>
+<section class="bottom-bar">
+	<button class="btn btn-default" ng-click="resetGame()">Reset</button>
+</section>
